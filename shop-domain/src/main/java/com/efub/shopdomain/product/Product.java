@@ -3,6 +3,7 @@ package com.efub.shopdomain.product;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -20,6 +21,7 @@ public class Product {
     @Column(nullable = false)
     private BigDecimal price;
 
+    @Builder
     public Product(String name, BigDecimal price) {
         this.name = name;
         this.price = price;

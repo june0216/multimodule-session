@@ -1,8 +1,8 @@
-package com.efub.shopapplication.service;
+package com.efub.shopapi.service;
 
+import com.efub.shopapi.dto.ProductDto;
 import com.efub.shopdomain.product.Product;
 import com.efub.shopdomainrdb.ProductRdbService;
-import com.efub.shopdomainredis.ProductCache;
 import com.efub.shopdomainredis.ProductRedisService;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -10,19 +10,20 @@ import org.springframework.stereotype.Service;
 
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRdbService productRdbService;
     private final ProductRedisService productRedisService;
 
-
-    @Transactional
-    public void addNewProduct(Product product) {
+    public Product addNewProduct(ProductDto reqDto) {
+        Product product =  reqDto.toEntity();
         // RDBMS에 상품 정보를 저장
         productRdbService.saveProduct(product);
 
         // Redis에 상품 정보를 캐싱
         productRedisService.cacheProductDetails(product);
+        return product;
     }
     // Redis에서 상품 조회
     public Product getProduct(Long id) {
