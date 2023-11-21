@@ -59,51 +59,46 @@ project(':shop-common') {
 
 
 project(":shop-api") {
-    jar { enabled = false }
-    dependencies {
-        implementation project(path:':shop-common', configuration: 'default') //shop-common 모듈에 대한 프로젝트 간 의존성을 선언합니다., shop-common의 코드를 사용
-        implementation project(path:':shop-domain-rdb', configuration: 'default')
-        implementation project(path:':shop-domain-redis', configuration: 'default')
-        implementation 'org.springframework.boot:spring-boot-starter-web' //Spring Boot 웹 스타터 의존성을 추가합니다. 이는 웹 애플리케이션 개발에 필요한 스프링 부트 컴포넌트와 라이브러리를 포함
-        implementation 'org.springframework.boot:spring-boot-starter-data-rest'
-        runtimeOnly 'com.mysql:mysql-connector-j'
-    }
-}
-project(":shop-common") {
     bootJar { enabled = true }
     jar { enabled = false }
     dependencies {
-
-        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation project(':shop-common') //shop-common 모듈에 대한 프로젝트 간 의존성을 선언합니다., shop-common의 코드를 사용
+        implementation project(':shop-domain-rdb')
+        implementation project(':shop-domain-redis')
+        implementation 'org.springframework.boot:spring-boot-starter-web' //Spring Boot 웹 스타터 의존성을 추가합니다. 이는 웹 애플리케이션 개발에 필요한 스프링 부트 컴포넌트와 라이브러리를 포함
+        implementation project(':shop-domain')
     }
 }
+
 
 project(":shop-domain") {
-    bootJar { enabled = true }
-    jar { enabled = false }
+    bootJar { enabled = false }
+    jar { enabled = true }
     dependencies {
-        implementation project(path:':shop-common', configuration: 'default')
+        implementation project(':shop-common')
 
 
     }
 }
 
 project(":shop-domain-rdb") {
-    bootJar { enabled = true }
-    jar { enabled = false }
+    bootJar { enabled = false }
+    jar { enabled = true }
     dependencies {
-        implementation project(path:':shop-common', configuration: 'default')
-        implementation project(path:':shop-domain', configuration: 'default')
+        implementation project(':shop-common')
+        implementation project(':shop-domain')
+        implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+        runtimeOnly 'com.mysql:mysql-connector-j'
 
     }
 }
 
 project(":shop-domain-redis") {
-    bootJar { enabled = true }
-    jar { enabled = false }
+    bootJar { enabled = false }
+    jar { enabled = true }
     dependencies {
-        implementation project(path:':shop-common', configuration: 'default')
-        implementation project(path:':shop-domain', configuration: 'default')
+        implementation project(':shop-common')
+        implementation project(':shop-domain')
         //redis
         implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     }

@@ -2,10 +2,11 @@ package com.efub.shopdomainrdb;
 
 
 
-import com.efub.shopdomain.product.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.efub.shopdomain.product.Product;
 
 @Service
 @Transactional
