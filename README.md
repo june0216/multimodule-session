@@ -2,19 +2,23 @@
 
 # 💜 Module?
 
-- 모듈은 독립적인 의미가 갖는다.
-- 모듈은 어떠한 추상화 정도에 대한 계층을 가지고 있다.
-- 계층 간 의존 관계에 대한 규칙이 있다.
+- 모듈은 독립적인 의미가 갖습니다.
+- 모듈은 어떠한 추상화 정도에 대한 계층을 가지고 있습니다.
+- 계층 간 의존 관계에 대한 규칙이 있습니다.
 
 # 💜 Multi-module?
 
-- 서로 독립적인 프로젝트를 하나의 프로젝트로 묶어 모듈로서 사용하는 구조
-- 다른 모듈과 의존성을 가지며 연결
-- 각 모듈은 독립적으로 빌드할 수 있음
+- 서로 독립적인 프로젝트를 하나의 프로젝트로 묶어 모듈로서 사용하는 구조입니다.
+- 다른 모듈과 의존성을 가지며 연결합니다.
+- 각 모듈은 독립적으로 빌드할 수 있습니다.
 
 # 💜 common의 저주
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/e2c6ccd4-4439-43db-96e9-e654aaf4aa71/1dcc72a2-f52a-45cc-a2ed-c61793c59c7a/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/76603301/285415286-aae1cbae-918e-49aa-9053-6342c547e5d8.png)
+
+Common을 변경한다는 것은 1) Common을 사용하는 모든 프로젝트에 영향을 줄 수 있음을 의미하고 2) Common을 고치면 사이드 이펙트가 발생하기 쉽기 때문에 변경을 꺼리게 됩니다.
+3) Common으로 의존성 관리까지 하고 있다면 자동 구성에 의해 빌드 또는 실행에 영향을 줄 수도 있습니다. 
+공통 모듈의 영향이 크지 않는 방향으로 모듈을 나누는 것이 좋습니다. 
 
 # 💜 예시
 
@@ -59,7 +63,7 @@ shop/ (루트 프로젝트)
 └── build.gradle (루트 빌드 파일)
 ```
 
-![multi-infra.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/e2c6ccd4-4439-43db-96e9-e654aaf4aa71/97a6f34b-0c5d-41ab-9347-f6ad6339fef8/multi-infra.png)
+![multi-infra.png](https://user-images.githubusercontent.com/76603301/285415106-4f0a0366-82ff-4cac-a1b4-b59b6377271e.png)
 
 도메인 계층에서 여러 인프라스트럭처를 사용해야할 때 꼬이는 의존 관계를 많이 보았습니다.
 
@@ -142,8 +146,6 @@ public class ProductApplicationService {
 
 ## 1-1) 프로젝트 생성
 
-![스크린샷 2023-11-20 오전 1.58.45(2).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/e2c6ccd4-4439-43db-96e9-e654aaf4aa71/f4215c1f-d2d7-4ae6-abd1-9f1b2fe1ed74/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-11-20_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_1.58.45(2).png)
-
 ### Spring project 설정
 
 ✔️**Java version** : java 11
@@ -156,13 +158,13 @@ public class ProductApplicationService {
 
 → 루트 프로젝트는 **하위 모듈을 관리하는 역할** 만 하 때문에 src 폴더를 삭제해도 괜찮다.
 
-![스크린샷 2023-11-20 오전 2.00.56(2).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/e2c6ccd4-4439-43db-96e9-e654aaf4aa71/9497b664-2a8a-44c7-867d-0a909db4e065/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-11-20_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_2.00.56(2).png)
+![스크린샷 2023-11-20 오전 2.00.56(2).png](https://user-images.githubusercontent.com/76603301/285414920-d8eb4b0a-20df-467f-87a6-e5f9a9240ef0.png)
 
 ## 1-3) 모듈 생성
 
-![스크린샷 2023-11-20 오전 2.01.35(2).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/e2c6ccd4-4439-43db-96e9-e654aaf4aa71/6ba0f9f6-d79b-4c46-9589-02539512ead1/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-11-20_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_2.01.35(2).png)
 
-![스크린샷 2023-11-21 오전 12.57.46(2).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/e2c6ccd4-4439-43db-96e9-e654aaf4aa71/aa8a70c4-8b62-4423-91a5-5f754d1c54ed/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-11-21_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_12.57.46(2).png)
+![스크린샷 2023-11-21 오전 12.57.46(2).png](https://user-images.githubusercontent.com/76603301/285414643-1b610c62-8aba-43a8-841e-4af2bb60e21e.png)
+![스크린샷 2023-11-20 오전 2.01.35(2).png](https://user-images.githubusercontent.com/76603301/285414340-d3a295b9-6f31-4534-a6bc-12c1ec49d386.png)
 
 ## 1-4) setting.gradle
 
@@ -182,9 +184,7 @@ include 'shop-common'
 # 2) gradle 작성
 
 <aside>
-🌱 **Gradle?**
-
-각 모듈의 종속성을 명확하게 정의하고 관리할 수 있는 기능을 제공
+🌱 Gradle? => 각 모듈의 종속성을 명확하게 정의하고 관리할 수 있는 기능을 제공
 
 </aside>
 
@@ -299,6 +299,12 @@ project(":shop-domain-redis") {
 - **`subprojects`**: 모든 하위 프로젝트(서브 모듈)에 공통으로 적용될 설정을 정의합니다. 여기에는 Java 플러그인, IDEA 플러그인, 스프링 부트 플러그인 등이 포함됩니다.
 - **`repositories`**: Maven 중앙 저장소를 지정합니다. 이 저장소는 프로젝트에서 필요한 모든 종속성을 다운로드하는 데 사용됩니다.
 - **`dependencies`**: 모든 서브 프로젝트에서 공통적으로 사용될 종속성을 정의합니다. 예를 들어, Lombok과 JUnit Jupiter와 같은 테스트 종속성이 여기에 포함됩니다.
+
+
+
+### 참고 자료 
+https://techblog.woowahan.com/2637/
+https://mangkyu.tistory.com/304
 
 | application - 실행가능한 main |
 | --- |
