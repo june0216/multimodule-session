@@ -302,12 +302,14 @@ project(":shop-domain-redis") {
 
 
 
-### 참고 자료 
-https://techblog.woowahan.com/2637/
-https://mangkyu.tistory.com/304
-
 | application - 실행가능한 main |
 | --- |
 | redis, rdb |
 | domain - 엔티티 |
 | common - 공통 |
+
+
+### 참고 자료 
+1) https://techblog.woowahan.com/2637/
+2) https://mangkyu.tistory.com/304
+
