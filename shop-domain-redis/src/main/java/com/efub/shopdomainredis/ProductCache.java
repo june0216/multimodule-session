@@ -21,11 +21,6 @@ public class ProductCache {
     private BigDecimal price;
 
 
-    // 표준 getters 및 setters
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
