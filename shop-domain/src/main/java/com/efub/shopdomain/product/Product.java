@@ -3,16 +3,20 @@ package com.efub.shopdomain.product;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@NoArgsConstructor
-@Table(name = "products")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id", updatable = false)
     private Long id;
 
     @Column(nullable = false)
@@ -27,19 +31,6 @@ public class Product {
         this.price = price;
     }
 
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
 
 }
 

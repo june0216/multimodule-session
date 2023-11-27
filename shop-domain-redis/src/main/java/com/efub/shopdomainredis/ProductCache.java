@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.annotation.Id;
 
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
 @Builder
 @RedisHash("productCache")
 public class ProductCache {
@@ -19,6 +19,7 @@ public class ProductCache {
     private Long id;
     private String name;
     private BigDecimal price;
+
 
     // 표준 getters 및 setters
     public Long getId() {
