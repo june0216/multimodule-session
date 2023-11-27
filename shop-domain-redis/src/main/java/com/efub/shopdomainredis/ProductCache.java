@@ -1,9 +1,18 @@
 package com.efub.shopdomainredis;
 
 import java.math.BigDecimal;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.annotation.Id;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
+@Builder
 @RedisHash("productCache")
 public class ProductCache {
     @Id
@@ -20,16 +29,8 @@ public class ProductCache {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
     }
 
     public void setPrice(BigDecimal price) {
