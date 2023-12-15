@@ -13,6 +13,7 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
+@Getter
 @RedisHash("productCache")
 public class ProductCache {
     @Id

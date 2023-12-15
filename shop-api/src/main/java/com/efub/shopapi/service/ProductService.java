@@ -4,7 +4,7 @@ import com.efub.shopapi.dto.ProductDto;
 import com.efub.shopdomain.product.Product;
 import com.efub.shopdomainrdb.ProductRdbService;
 import com.efub.shopdomainredis.ProductRedisService;
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

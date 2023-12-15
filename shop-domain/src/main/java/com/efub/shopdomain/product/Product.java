@@ -1,7 +1,7 @@
 package com.efub.shopdomain.product;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 import lombok.AccessLevel;
